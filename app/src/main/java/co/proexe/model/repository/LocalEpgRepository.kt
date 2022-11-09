@@ -1,12 +1,17 @@
 package co.proexe.model.repository
 
+import android.content.Context
 import co.proexe.model.data.TvProgramme
 import co.proexe.model.data.TvProgrammeCategory
-import java.util.*
 import kotlinx.coroutines.delay
+import java.util.Calendar
+import java.util.Date
+import javax.inject.Inject
 import kotlin.random.Random
 
-class LocalEpgRepository {
+class LocalEpgRepository @Inject constructor(
+    private val context: Context
+) {
 
     suspend fun getProgrammesForDateTime(
         dateTime: Date,

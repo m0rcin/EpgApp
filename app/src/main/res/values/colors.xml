@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#202027</color>
-    <color name="colorPrimaryDark">#FF202027</color>
+    <color name="colorPrimaryDark">#1E1E24</color>
     <color name="colorAccent">#FF4197CA</color>
     <color name="colorDivider">#0DFFFFFF</color>
     <color name="colorRecyclerViewTimeBackground">#FF36363E</color>
@@ -9,4 +9,5 @@
     <color name="colorRecyclerViewTimeItemNotSelected">#FF67676D</color>
     <color name="colorText">#FFDADADA</color>
     <color name="colorStatusBar">#FF151519</color>
+    <color name="red_200">#E17185</color>
 </resources>
