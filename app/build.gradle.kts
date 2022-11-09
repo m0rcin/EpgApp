@@ -52,7 +52,7 @@ dependencies {
     implementation("androidx.hilt:hilt-navigation-compose:${rootProject.extra["hiltCompilerVersion"]}")
     kapt("com.google.dagger:hilt-android-compiler:${rootProject.extra["hiltPluginVersion"]}")
     kapt("androidx.hilt:hilt-compiler:${rootProject.extra["hiltCompilerVersion"]}")
-
+    implementation("io.coil-kt:coil-compose:2.2.2")
     implementation("com.google.android.material:material:1.7.0")
     implementation("androidx.appcompat:appcompat:1.5.1")
     implementation("com.google.accompanist:accompanist-swiperefresh:${rootProject.extra["swipeRefresh"]}")
