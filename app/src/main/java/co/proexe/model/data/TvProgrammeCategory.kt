@@ -9,5 +9,6 @@ enum class TvProgrammeCategory {
     MUSIC,
     GENERAL,
     SPORT,
-    LIFESTYLE
+    LIFESTYLE,
+    FAVOURITES
 }

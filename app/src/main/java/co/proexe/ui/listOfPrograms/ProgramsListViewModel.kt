@@ -9,7 +9,10 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import co.proexe.EpgUseCase
+import co.proexe.R
+import co.proexe.model.data.MenuItemData
 import co.proexe.model.data.TvProgramme
+import co.proexe.model.data.TvProgrammeCategory
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Job
@@ -36,7 +39,7 @@ class ProgramsListViewModel @Inject constructor(
 
     private var errorMessage by mutableStateOf("")
     private val handler = CoroutineExceptionHandler { _, _ ->
-        errorMessage = "tu zrwóciłbym błąd po stronie api" +
+        errorMessage = "tu zwróciłbym błąd po stronie api" +
                 "((exception as HttpException).response() as Response).raw()"
         _showErrorMsg.value = true
     }
@@ -63,5 +66,39 @@ class ProgramsListViewModel @Inject constructor(
 
     fun cancelFetchingTvProgrammeJob() {
         fetchingTvProgrammeJob?.cancel()
+    }
+
+    fun getMenuItemsList(): List<MenuItemData> {
+
+        return TvProgrammeCategory.values().map {
+
+            val imageResource = when (it) {
+                TvProgrammeCategory.ALL -> R.drawable.ic_all
+                TvProgrammeCategory.KIDS -> R.drawable.ic_kids
+                TvProgrammeCategory.EDUCATIONAL -> R.drawable.ic_edu
+                TvProgrammeCategory.MOVIES_AND_SERIES -> R.drawable.ic_movie
+                TvProgrammeCategory.INFO -> R.drawable.ic_info
+                TvProgrammeCategory.MUSIC -> R.drawable.ic_music
+                TvProgrammeCategory.GENERAL -> R.drawable.ic_general
+                TvProgrammeCategory.SPORT -> R.drawable.ic_sport
+                TvProgrammeCategory.LIFESTYLE -> R.drawable.ic_styl
+                else -> R.drawable.ic_fav
+            }
+
+            val stringResource = when (it) {
+                TvProgrammeCategory.ALL -> R.string.menu_item_all
+                TvProgrammeCategory.KIDS -> R.string.menu_item_kids
+                TvProgrammeCategory.EDUCATIONAL -> R.string.menu_item_edu
+                TvProgrammeCategory.MOVIES_AND_SERIES -> R.string.menu_item_movies
+                TvProgrammeCategory.INFO -> R.string.menu_item_news
+                TvProgrammeCategory.MUSIC -> R.string.menu_item_mtv
+                TvProgrammeCategory.GENERAL -> R.string.menu_item_general
+                TvProgrammeCategory.SPORT -> R.string.menu_item_sport
+                TvProgrammeCategory.LIFESTYLE -> R.string.menu_item_lifestyle
+                else -> R.string.menu_item_favourites
+            }
+
+            MenuItemData(text = stringResource, menuIcon = imageResource)
+        }
     }
 }

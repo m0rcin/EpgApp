@@ -43,6 +43,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import co.proexe.R
 import co.proexe.ui.drawer.Drawer
+import co.proexe.ui.dropDown.DropDown
 import co.proexe.ui.utils.bgColor
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
@@ -70,9 +71,10 @@ fun ProgramsList() {
             viewModel.itemsState.sortedByDescending { it.progressPercent }
         }
     }
-
+    val listItems = viewModel.getMenuItemsList()
     val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
+
     Scaffold(
         scaffoldState = scaffoldState,
         backgroundColor = MaterialTheme.colors.surface,
@@ -102,7 +104,8 @@ fun ProgramsList() {
                             modifier = Modifier.requiredSize(24.dp)
                         )
                     }
-                }, actions = {
+                },
+                actions = {
                     IconButton(
                         onClick = {/* Do Something*/ }
                     ) {
@@ -113,18 +116,9 @@ fun ProgramsList() {
                         )
 
                     }
-                    IconButton(
-                        onClick = {/* Do Something*/ }
-                    ) {
-                        Image(
-                            painter = painterResource(R.drawable.ic_all),
-                            contentDescription = "",
-                            colorFilter = ColorFilter.tint(Color.White),
-                            modifier = Modifier.requiredSize(24.dp)
-                        )
-
-                    }
-                })
+                    DropDown(listItems = listItems, scaffoldState = scaffoldState)
+                }
+            )
         },
         drawerContent = {
             Drawer(
