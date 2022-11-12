@@ -1,5 +1,6 @@
 package co.proexe.ui.listOfPrograms
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -130,10 +131,16 @@ fun ProgramsList() {
                 scope = scope,
                 scaffoldState = scaffoldState
             )
+            BackHandler(enabled = scaffoldState.drawerState.isOpen) {
+                scope.launch {
+                    scaffoldState.drawerState.close()
+                }
+            }
         },
         drawerBackgroundColor = MaterialTheme.colors.surface,
         drawerScrimColor = MaterialTheme.colors.surface.copy(alpha = 0.67f),
-        drawerElevation = 32.dp
+        drawerElevation = 32.dp,
+        drawerGesturesEnabled = scaffoldState.drawerState.isOpen
     ) { innerPadding ->
         when {
             viewModel.loading -> Column(
