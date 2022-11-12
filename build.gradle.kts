@@ -18,7 +18,7 @@ buildscript {
 }
 
 plugins {
-    id("org.jetbrains.kotlin.android") version "1.7.0" apply false
+    id("org.jetbrains.kotlin.android") version "1.7.20" apply false
 }
 
 allprojects {

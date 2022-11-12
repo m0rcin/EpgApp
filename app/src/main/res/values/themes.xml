@@ -47,7 +47,6 @@
         <!--Material shape attributes-->
         <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.EpgApp.SmallComponent</item>
         <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.EpgApp.MediumComponent</item>
-        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.EpgApp.LargeComponent</item>
 
         <item name="emphasisHighAlpha">0.78</item>
         <item name="emphasisMediumAlpha">0.63</item>

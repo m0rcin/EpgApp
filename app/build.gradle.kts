@@ -67,22 +67,26 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:${rootProject.extra["lifecycleVersion"]}")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${rootProject.extra["lifecycleVersion"]}")
 
-    implementation("androidx.compose.ui:ui:${rootProject.extra["composeVersion"]}")
-    implementation("androidx.compose.ui:ui-tooling:${rootProject.extra["composeVersion"]}")
-    implementation("androidx.compose.ui:ui-util:${rootProject.extra["composeVersion"]}")
-
-    implementation("androidx.compose.foundation:foundation:${rootProject.extra["composeVersion"]}")
-    implementation("androidx.compose.foundation:foundation-layout:${rootProject.extra["composeVersion"]}")
-
-    implementation("com.google.android.material:compose-theme-adapter:${rootProject.extra["composeThemeAdapterVersion"]}")
-    implementation("androidx.compose.material:material:${rootProject.extra["composeVersion"]}")
-    implementation("androidx.compose.material:material-icons-core:${rootProject.extra["composeVersion"]}")
-    implementation("androidx.compose.material:material-icons-extended:${rootProject.extra["composeVersion"]}")
-
     implementation("androidx.activity:activity-compose:${rootProject.extra["composeActivityVersion"]}")
-    implementation("androidx.compose.runtime:runtime:${rootProject.extra["composeVersion"]}")
-    implementation("androidx.compose.runtime:runtime-livedata:${rootProject.extra["composeVersion"]}")
-    implementation("androidx.compose.runtime:runtime-rxjava2:${rootProject.extra["composeVersion"]}")
-    implementation("androidx.navigation:navigation-compose:${rootProject.extra["composeNavigationVersion"]}")
-    implementation("androidx.constraintlayout:constraintlayout-compose:${rootProject.extra["composeConstraintLayoutVersion"]}")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:${rootProject.extra["lifecycleVersion"]}")
+    implementation("com.google.android.material:compose-theme-adapter:${rootProject.extra["composeThemeAdapter"]}")
+    implementation("androidx.constraintlayout:constraintlayout-compose:${rootProject.extra["constraintLayoutCompose"]}")
+
+    //Jetpack Compose using Bill of Materials (BOM)
+    implementation("androidx.compose.foundation:foundation")
+    implementation("androidx.compose.foundation:foundation-layout")
+
+    implementation(platform("androidx.compose:compose-bom:${rootProject.extra["composeBOM"]}"))
+    implementation("androidx.compose.ui:ui")
+    implementation("androidx.compose.ui:ui-tooling")
+    implementation("androidx.compose.ui:ui-util")
+
+    implementation("androidx.compose.material:material")
+    implementation("androidx.compose.material:material-icons-core")
+    implementation("androidx.compose.material:material-icons-extended")
+
+    implementation("androidx.compose.runtime:runtime")
+    implementation("androidx.compose.runtime:runtime-livedata")
+    implementation("androidx.compose.runtime:runtime-rxjava2")
+    implementation("androidx.navigation:navigation-compose")
 }

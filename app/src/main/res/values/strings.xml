@@ -15,4 +15,6 @@
     <string name="drawer_series">Seriale</string>
     <string name="drawer_kids">Dla dzieci</string>
     <string name="top_app_bar_title">Program TV</string>
+    <string name="drawer_user_title">Moje konto</string>
+    <string name="drawer_user_subtitle">1234500</string>
 </resources>
