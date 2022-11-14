@@ -10,6 +10,8 @@ import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.unit.dp
 import co.proexe.R
 
+const val pattern = "HH:mm"
+
 val bgColor = Brush.radialGradient(
     colors = listOf(
         Color(0xFF30303A),

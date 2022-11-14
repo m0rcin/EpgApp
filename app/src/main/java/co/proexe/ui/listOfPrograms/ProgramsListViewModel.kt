@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import co.proexe.EpgUseCase
 import co.proexe.R
+import co.proexe.model.data.DayTile
 import co.proexe.model.data.MenuItemData
 import co.proexe.model.data.TvProgramme
 import co.proexe.model.data.TvProgrammeCategory
@@ -28,18 +29,26 @@ class ProgramsListViewModel @Inject constructor(
     private val _itemsState = mutableStateListOf<TvProgramme>()
     val itemsState: List<TvProgramme> = _itemsState
 
+    private val _listItemState = mutableStateListOf<DayTile>()
+    val listItemState: List<DayTile> = _listItemState
+
     var loading by mutableStateOf(true)
 
+    private var errorMessage by mutableStateOf("")
     private val _showErrorMsg = mutableStateOf(false)
     val showErrorMsg = _showErrorMsg
-
 
     private val _emptyProgramsList = mutableStateOf(false)
     val emptyProgramsList = _emptyProgramsList
 
-    private var errorMessage by mutableStateOf("")
-    private val handler = CoroutineExceptionHandler { _, _ ->
-        errorMessage = "tu zwróciłbym błąd po stronie api" +
+    private val programmeHandler = CoroutineExceptionHandler { _, _ ->
+        errorMessage = "tu zwróciłbym błąd związany z pobieraniem listy programów" +
+                "((exception as HttpException).response() as Response).raw()"
+        _showErrorMsg.value = true
+    }
+
+    private val timeHandler = CoroutineExceptionHandler { _, _ ->
+        errorMessage = "tu zwróciłbym błąd związany z pobieraniem listy dni" +
                 "((exception as HttpException).response() as Response).raw()"
         _showErrorMsg.value = true
     }
@@ -51,21 +60,33 @@ class ProgramsListViewModel @Inject constructor(
 
     private var fetchingTvProgrammeJob: Job? = null
     suspend fun fetchTvProgramme() {
-        fetchingTvProgrammeJob = viewModelScope.launch(handler) {
-
+        fetchingTvProgrammeJob = viewModelScope.launch(programmeHandler) {
             loading = true
-            _itemsState.clear()
-            delay(789L)
+            delay(1789L)
             val dateNow = useCase.getCurrentTime()
             val tvProgramme = useCase.fetchProgrammesForDateTime(dateNow, 10)
             _itemsState.swapList(tvProgramme)
-            _emptyProgramsList.value = tvProgramme.isEmpty()
+            _emptyProgramsList.value = tvProgramme.isEmpty() // w przypadku zwrócenia pustej listy wyświetlona zostałaby informacja w postaci Dialog'u, Snackbar'a itp.
             loading = false
         }
     }
 
     fun cancelFetchingTvProgrammeJob() {
         fetchingTvProgrammeJob?.cancel()
+        loading = false
+    }
+
+    private var fetchingDaysJob: Job? = null
+    suspend fun fetchDays() {
+        fetchingDaysJob = viewModelScope.launch(timeHandler) {
+            val listOfDays = useCase.fetchDayTiles()
+            _listItemState.swapList(listOfDays)
+        }
+    }
+
+    fun cancelFetchingDaysJob() {
+        fetchingDaysJob?.cancel()
+        loading = false
     }
 
     fun getMenuItemsList(): List<MenuItemData> {

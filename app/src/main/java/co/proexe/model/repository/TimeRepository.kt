@@ -1,6 +1,5 @@
 package co.proexe.model.repository
 
-import android.content.Context
 import co.proexe.R
 import co.proexe.model.data.DayTile
 import kotlinx.coroutines.delay
@@ -8,13 +7,11 @@ import java.util.Calendar
 import java.util.Date
 import javax.inject.Inject
 
-class TimeRepository @Inject constructor(
-    private val context: Context
-) {
+class TimeRepository @Inject constructor() {
 
-    suspend fun getDayTiles() {
+    suspend fun getDayTiles(): List<DayTile> {
         delay(100)
-        listOf(
+        return listOf(
             DayTile(addDaysToCurrentCalendar(-2), R.string.day_before_yesterday),
             DayTile(addDaysToCurrentCalendar(-1), R.string.yesterday),
             DayTile(addDaysToCurrentCalendar(0), R.string.today),

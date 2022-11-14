@@ -32,8 +32,6 @@ import kotlinx.coroutines.CoroutineScope
 @Composable
 fun Drawer(scope: CoroutineScope, scaffoldState: ScaffoldState) {
 
-    var selectedIndex by remember { mutableStateOf(-1) }
-    val onItemClick = { index: Int -> selectedIndex = index }
     val listState = rememberLazyListState()
 
     val items = listOf(
@@ -46,6 +44,8 @@ fun Drawer(scope: CoroutineScope, scaffoldState: ScaffoldState) {
         NavigationDrawerItem(R.string.drawer_series, false),
         NavigationDrawerItem(R.string.drawer_kids, false),
     )
+    var selectedIndex by remember { mutableStateOf(items[1].labelId) }
+    val onItemClick = { index: Int -> selectedIndex = index }
 
     Column(
         modifier = Modifier.background(brush = bgColor)

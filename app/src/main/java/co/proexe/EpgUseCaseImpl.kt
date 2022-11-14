@@ -1,5 +1,6 @@
 package co.proexe
 
+import co.proexe.model.data.DayTile
 import co.proexe.model.data.TvProgramme
 import co.proexe.model.repository.LocalEpgRepository
 import co.proexe.model.repository.TimeRepository
@@ -15,7 +16,7 @@ class EpgUseCaseImpl @Inject constructor(
         return localEpgRepository.getProgrammesForDateTime(dateTime, amount)
     }
 
-    override suspend fun fetchDayTiles() {
+    override suspend fun fetchDayTiles(): List<DayTile> {
         return timeRepository.getDayTiles()
     }
 

@@ -1,6 +1,7 @@
 package co.proexe.ui.listOfPrograms
 
 import android.icu.text.SimpleDateFormat
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
@@ -26,15 +27,16 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import co.proexe.model.data.TvProgramme
 import co.proexe.ui.utils.noPadding
+import co.proexe.ui.utils.pattern
 import coil.compose.AsyncImage
 import java.util.Locale
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun ProgramsListItem(item: TvProgramme) {
-    Column {
-        val pattern = "HH:mm"
-
+    Column(
+        modifier = Modifier.clickable { }
+    ) {
         ListItem(
             text = { Text(item.title, maxLines = 1, overflow = TextOverflow.Ellipsis) },
             secondaryText = {

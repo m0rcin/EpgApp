@@ -66,9 +66,9 @@
     </style>
 
     <style name="TextAppearance.EpgApp.Caption" parent="TextAppearance.MaterialComponents.Caption">
-        <item name="fontFamily">@font/poppins_light</item>
+        <item name="fontFamily">@font/poppins_semibold</item>
         <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@color/color_on_surface_emphasis_high</item>
+        <item name="android:textColor">@color/color_on_surface_emphasis_disabled</item>
     </style>
 
     <style name="TextAppearance.EpgApp.Overline" parent="TextAppearance.MaterialComponents.Overline">

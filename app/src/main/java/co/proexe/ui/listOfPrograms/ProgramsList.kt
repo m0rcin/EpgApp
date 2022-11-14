@@ -5,9 +5,9 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
@@ -56,6 +56,7 @@ fun ProgramsList() {
 
     LaunchedEffect(Unit) {
         viewModel.fetchTvProgramme()
+        viewModel.fetchDays()
     }
 
     var refreshing by remember { mutableStateOf(false) }
@@ -71,6 +72,8 @@ fun ProgramsList() {
             viewModel.itemsState.sortedByDescending { it.progressPercent }
         }
     }
+
+    val days = viewModel.listItemState
     val listItems = viewModel.getMenuItemsList()
     val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
@@ -149,26 +152,38 @@ fun ProgramsList() {
                     color = MaterialTheme.colors.secondary,
                 )
                 Spacer(modifier = Modifier.height(133.dp))
+                BackHandler(enabled = viewModel.loading) {
+                    scope.launch {
+                        viewModel.cancelFetchingDaysJob()
+                        viewModel.cancelFetchingTvProgrammeJob()
+                    }
+                }
             }
 
-            else ->
+            else -> {
                 SwipeRefresh(
                     state = rememberSwipeRefreshState(isRefreshing = refreshing),
                     onRefresh = { refreshing = true }
                 ) {
-                    LazyColumn(
-                        modifier = Modifier
-                            .background(brush = bgColor)
-                            .padding(innerPadding)
-                            .fillMaxWidth()
-                    ) {
-                        items(
-                            items = list
-                        ) { listItem ->
-                            ProgramsListItem(listItem)
+                    Column {
+                        Row {
+                            DaysListRow(days = days)
+                        }
+                        LazyColumn(
+                            modifier = Modifier
+                                .background(brush = bgColor)
+                                .padding(innerPadding)
+                                .fillMaxSize()
+                        ) {
+                            items(
+                                items = list
+                            ) { listItem ->
+                                ProgramsListItem(listItem)
+                            }
                         }
                     }
                 }
+            }
         }
     }
 }
