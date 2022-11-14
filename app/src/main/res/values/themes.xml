@@ -1,8 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.EpgTheme" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+    <style name="Theme.EpgTheme" parent="App.Theme.EpgTheme" />
+
+    <style name="Base.Theme.MaterialThemeBuilder" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="android:statusBarColor">?attr/colorStatusBar</item>
+        <item name="android:background">?attr/colorSurface</item>
+    </style>
+
+    <style name="App.Theme.EpgTheme" parent="Base.Theme.MaterialThemeBuilder">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
+        <item name="colorSecondary">@color/colorAccent</item>
+
+        <item name="colorChannelBackground">@color/colorRecyclerViewChannelBackground</item>
+        <item name="android:colorBackground">@color/colorRecyclerViewTimeBackground</item>
+        <item name="colorTimeItemNotSelected">@color/colorRecyclerViewTimeItemNotSelected</item>
+
+
+        <item name="colorSurface">@color/colorPrimaryDark</item>
+        <item name="colorError">@color/red_200</item>
+        <!--"On" colors define how text, icons and strokes are colored in relation to the surface-->
+        <!--on which they appear.-->
+        <item name="colorOnPrimary">@color/colorText</item>
+        <item name="colorOnSecondary">@color/colorText</item>
+        <item name="colorOnBackground">@color/colorText</item>
+        <item name="colorOnSurface">@color/colorText</item>
+        <item name="colorOnError">@color/colorPrimaryDark</item>
+        <item name="colorStatusBar">@color/colorStatusBar</item>
+        <!--Material type attributes-->
+        <item name="textAppearanceHeadline1">@style/TextAppearance.EpgApp.Headline1</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.EpgApp.Headline2</item>
+        <item name="textAppearanceHeadline3">@style/TextAppearance.EpgApp.Headline3</item>
+        <item name="textAppearanceHeadline4">@style/TextAppearance.EpgApp.Headline4</item>
+        <item name="textAppearanceHeadline5">@style/TextAppearance.EpgApp.Headline5</item>
+        <item name="textAppearanceHeadline6">@style/TextAppearance.EpgApp.Headline6</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.EpgApp.Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearance.EpgApp.Subtitle2</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.EpgApp.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.EpgApp.Body2</item>
+        <item name="textAppearanceButton">@style/TextAppearance.EpgApp.Button</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.EpgApp.Caption</item>
+        <item name="textAppearanceOverline">@style/TextAppearance.EpgApp.Overline</item>
+        <item name="tooltipStyle">@style/TextAppearance.EpgApp.tooltipStyle</item>
+        <!--Material shape attributes-->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.EpgApp.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.EpgApp.MediumComponent</item>
+
+        <item name="emphasisHighAlpha">0.78</item>
+        <item name="emphasisMediumAlpha">0.63</item>
+        <item name="emphasisDisabledAlpha">0.25</item>
     </style>
 
 </resources>

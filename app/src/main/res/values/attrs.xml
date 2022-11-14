@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="colorPrimarySurfaceVariant" format="color" />
+
+    <attr name="emphasisHighAlpha" format="float" />
+    <attr name="emphasisMediumAlpha" format="float" />
+    <attr name="emphasisDisabledAlpha" format="float" />
+
+    <attr name="colorFillColor" format="color"/>
+    <attr name="colorStrokeColor" format="color"/>
+
+    <attr name="colorStatusBar" format="color"/>
+    <attr name="colorTimeBackground" format="color"/>
+    <attr name="colorChannelBackground" format="color"/>
+    <attr name="colorTimeItemNotSelected" format="color"/>
+
+
+    <declare-styleable name="ShapeAttributeView">
+        <attr name="android:text"/>
+        <attr name="shapeSizeLetter" format="string"/>
+        <attr name="shapeFillColor" format="color"/>
+        <attr name="shapeStrokeColor" format="color"/>
+        <attr name="shapeAppearanceAttr" format="reference"/>
+        <attr name="fabStyle" format="reference"/>
+    </declare-styleable>
+
+</resources>
