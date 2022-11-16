@@ -10,7 +10,7 @@ android {
     buildToolsVersion = "${rootProject.extra["buildToolsVersion"]}"
 
     defaultConfig {
-        applicationId = "com.softwaret.mvi.android"
+        applicationId = "co.proexe.epgapp"
         minSdk = 26
         targetSdk = 33
         versionCode = 1
