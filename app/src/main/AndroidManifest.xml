@@ -18,7 +18,7 @@
         android:theme="@style/Theme.EpgTheme"
         tools:targetApi="31">
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.EpgActivity"
             android:exported="true"
             android:theme="@style/Theme.EpgTheme">
             <intent-filter>
